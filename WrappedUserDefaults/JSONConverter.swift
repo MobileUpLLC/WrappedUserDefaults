@@ -16,8 +16,6 @@ open class JSONConverter {
     enum Error: Swift.Error {
         
         case parsing
-        case decoding
-        case encoding
     }
     
     // MARK: - Encode
@@ -84,6 +82,7 @@ open class JSONConverter {
         
         return try decoder.decode(type, from: data)
     }
+    
     //JSON → Decodable
     class func decode<T: Decodable>(
         
@@ -129,6 +128,7 @@ open class JSONConverter {
         
         return result
     }
+    
     //Data → JsonString
     class func decode(
         
@@ -146,7 +146,4 @@ open class JSONConverter {
         
         return result
     }
-    
-    
-    
 }
