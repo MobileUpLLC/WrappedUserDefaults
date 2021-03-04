@@ -15,13 +15,13 @@ class JSONConverterTests: XCTestCase {
     
     func testDataEncoding() {
         
-        let testObject = "This is a string for testing!"
+        let testObject = 434.33
         
         do {
             
             let encodedData = try sut.encode(object: testObject)
             
-            let decodedData = try sut.decode(String.self, data: encodedData)
+            let decodedData = try sut.decode(Double.self, data: encodedData)
             
             XCTAssertEqual(decodedData, testObject)
             
@@ -31,28 +31,23 @@ class JSONConverterTests: XCTestCase {
         }
     }
     
-    func testJsonEncoding() {
+    func testDictionaryEncoding() {
 
-        
+        let dictionary: [String: Any] = ["One": 1, "Two": "Два", "Three": 0.47, "Four": true]
+
+        do {
+
+            let encodedData = try sut.encode(dictionary: dictionary)
+
+            let decodedData = try sut.decode(data: encodedData) as [String: Any]
+            //КАК СРАВНИТЬ СЛОВАРИ?
+            XCTAssertEqual(decodedData.keys, dictionary.keys)
+
+        } catch {
+
+            XCTFail()
+        }
     }
-    
-//    func testDictionaryEncoding() {
-//
-//        let dictionary: [String: Any] = ["One": 1, "Two": "Два", "Three": 0.47, "Four": true]
-//
-//        do {
-//
-//            let encodedData = try sut.encode(dictionary: dictionary)
-//
-//            let decodedData = try sut.decode(data: encodedData) as [String: Any]
-//
-//            XCTAssertEqual(<#T##expression1: Equatable##Equatable#>, <#T##expression2: Equatable##Equatable#>)
-//
-//        } catch {
-//
-//            XCTFail()
-//        }
-//    }
     
     func testJsonStringEncoding() {
         
@@ -62,9 +57,29 @@ class JSONConverterTests: XCTestCase {
             
             let encodedData = try sut.encode(jsonString: jsonString)
             
-            let decodedData = try sut.decode(data: encodedData) as String
+            let decodedData = try sut.decode(String.self, data: encodedData)
             
             XCTAssertEqual(jsonString, decodedData)
+            
+        } catch {
+            
+            XCTFail()
+        }
+    }
+    
+    func testJsonEncoding() {
+        
+        guard let url = Bundle(for: type(of: self)).url(forResource: "dictionary", withExtension: "json") else { return XCTFail() }
+        
+        do {
+            
+            let json = try Data(contentsOf: url)
+            
+            let encodedData = try JSONConverter.encode(json: json)
+            
+            let decodedData = try JSONConverter.decode(Data.self, data: encodedData)
+            
+            XCTAssertEqual(json, decodedData)
             
         } catch {
             

@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - JSONConverter
+
 open class JSONConverter {
     
     // MARK: - Types
@@ -22,8 +24,8 @@ open class JSONConverter {
     // Encodable -> Data
     class func encode<T: Encodable>(
         
-        object: T,
-        dataEncodingStrategy: JSONEncoder.DateEncodingStrategy = .deferredToDate
+        object               : T,
+        dataEncodingStrategy : JSONEncoder.DateEncodingStrategy = .deferredToDate
         
     ) throws -> Data {
         
@@ -36,8 +38,8 @@ open class JSONConverter {
     // JSON -> Data
     class func encode(
         
-        json: JSON,
-        options: JSONSerialization.WritingOptions = []
+        json    : JSON,
+        options : JSONSerialization.WritingOptions = []
         
     ) throws -> Data {
         
@@ -47,8 +49,8 @@ open class JSONConverter {
     // Dictionary -> Data
     class func encode(
         
-        dictionary: [String: Any],
-        options: JSONSerialization.WritingOptions = []
+        dictionary : [String : Any],
+        options    : JSONSerialization.WritingOptions = []
         
     ) throws -> Data {
         
@@ -58,12 +60,12 @@ open class JSONConverter {
     // JsonString -> Data
     class func encode(
         
-        jsonString: String,
-        options: JSONSerialization.WritingOptions = []
+        jsonString : String,
+        options    : JSONSerialization.WritingOptions = []
         
     ) throws -> Data {
         
-        return try encode(json: jsonString, options: options)
+        return try encode(object: jsonString)
     }
     
     
@@ -71,9 +73,9 @@ open class JSONConverter {
     //Data → Decodable
     class func decode<T: Decodable>(
         
-        _ type: T.Type,
-        data: Data,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
+        _ type               : T.Type,
+        data                 : Data,
+        dateDecodingStrategy : JSONDecoder.DateDecodingStrategy = .deferredToDate
         
     ) throws -> T {
         
@@ -86,9 +88,9 @@ open class JSONConverter {
     //JSON → Decodable
     class func decode<T: Decodable>(
         
-        _ type: T.Type,
-        json: Any,
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
+        _ type               : T.Type,
+        json                 : JSON,
+        dateDecodingStrategy : JSONDecoder.DateDecodingStrategy = .deferredToDate
         
     ) throws -> T {
         
@@ -100,9 +102,9 @@ open class JSONConverter {
     //Dictionary → Decodable
     class func decode<T: Decodable>(
         
-        _ type: T.Type,
-        dictionary: [String: Any],
-        dateDecodingStrategy: JSONDecoder.DateDecodingStrategy = .deferredToDate
+        _ type               : T.Type,
+        dictionary           : [String: Any],
+        dateDecodingStrategy : JSONDecoder.DateDecodingStrategy = .deferredToDate
         
     ) throws -> T {
         
@@ -114,8 +116,8 @@ open class JSONConverter {
     //Data → Dictionary
     class func decode(
         
-        data: Data,
-        options: JSONSerialization.ReadingOptions = []
+        data    : Data,
+        options : JSONSerialization.ReadingOptions = []
         
     ) throws -> [String: Any] {
         
@@ -132,8 +134,8 @@ open class JSONConverter {
     //Data → JsonString
     class func decode(
         
-        data: Data,
-        options: JSONSerialization.ReadingOptions = []
+        data    : Data,
+        options : JSONSerialization.ReadingOptions = []
         
     ) throws -> String {
         

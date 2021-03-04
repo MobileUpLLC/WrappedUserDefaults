@@ -17,8 +17,9 @@ extension UserDefaults {
     
     public func clearAll() {
         
-        UserDefaults.standard.removePersistentDomain(forName: UserDefaults.propertyWrapperDomain)
-        
-        UserDefaults.standard.synchronize()
+        if let identifier = Bundle.main.bundleIdentifier {
+            
+            UserDefaults.standard.removePersistentDomain(forName: identifier)
+        }
     }
 }
