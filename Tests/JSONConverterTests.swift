@@ -40,7 +40,7 @@ class JSONConverterTests: XCTestCase {
             let encodedData = try sut.encode(dictionary: dictionary)
 
             let decodedData = try sut.decode(data: encodedData) as [String: Any]
-            //КАК СРАВНИТЬ СЛОВАРИ?
+            
             XCTAssertEqual(decodedData.keys, dictionary.keys)
 
         } catch {
@@ -75,7 +75,7 @@ class JSONConverterTests: XCTestCase {
         
         do {
             
-            let json = try Data(contentsOf: url)
+            let json = try BundleFileReader.readData(name: "dictionary", withExtension: "json")
             
             let encodedData = try JSONConverter.encode(json: json)
             

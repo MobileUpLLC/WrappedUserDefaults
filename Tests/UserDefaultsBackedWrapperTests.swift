@@ -50,8 +50,8 @@ class UserDefaultsBackedWrapperTests: XCTestCase {
     
     override func tearDown() {
         
-        super.tearDown()
-        
         UserDefaults.standard.clearAll()
+        
+        super.tearDown()
     }
 }

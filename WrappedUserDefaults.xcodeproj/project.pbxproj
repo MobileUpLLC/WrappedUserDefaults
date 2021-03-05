@@ -15,6 +15,7 @@
 		BCA3CBC625EF7A7700123A1A /* UserDefaultsBackedWrapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA3CBC525EF7A7700123A1A /* UserDefaultsBackedWrapperTests.swift */; };
 		BCA5C64725F17709002BBD34 /* dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA5C64625F17709002BBD34 /* dictionary.json */; };
 		BCA5C64D25F17710002BBD34 /* array.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA5C64C25F17710002BBD34 /* array.json */; };
+		D76DA89A25F2638F00459823 /* BundleFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DA89925F2638F00459823 /* BundleFileReader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		BCA3CBC525EF7A7700123A1A /* UserDefaultsBackedWrapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsBackedWrapperTests.swift; sourceTree = "<group>"; };
 		BCA5C64625F17709002BBD34 /* dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dictionary.json; sourceTree = "<group>"; };
 		BCA5C64C25F17710002BBD34 /* array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array.json; sourceTree = "<group>"; };
+		D76DA89925F2638F00459823 /* BundleFileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleFileReader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +76,7 @@
 		BC04AA5825E7AA3E00152E93 = {
 			isa = PBXGroup;
 			children = (
-				BC04AA6325E7AA3E00152E93 /* WrappedUserDefaults */,
+				BC04AA6325E7AA3E00152E93 /* Source */,
 				BC04AA8625E7B32F00152E93 /* Tests */,
 				BC04AA6225E7AA3E00152E93 /* Products */,
 			);
@@ -89,15 +91,16 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		BC04AA6325E7AA3E00152E93 /* WrappedUserDefaults */ = {
+		BC04AA6325E7AA3E00152E93 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				BCA5C63225F121A3002BBD34 /* Resources */,
 				BC04AA9625E7BCD900152E93 /* Extensions */,
 				BC04AA6C25E7AA8300152E93 /* JSONConverter.swift */,
+				D76DA89925F2638F00459823 /* BundleFileReader.swift */,
 				BC04AA9D25E7BF7600152E93 /* UserDefaultsBackedWrapper.swift */,
 			);
-			path = WrappedUserDefaults;
+			path = Source;
 			sourceTree = "<group>";
 		};
 		BC04AA8625E7B32F00152E93 /* Tests */ = {
@@ -220,6 +223,7 @@
 			files = (
 				BC04AA9E25E7BF7600152E93 /* UserDefaultsBackedWrapper.swift in Sources */,
 				BC04AA6D25E7AA8300152E93 /* JSONConverter.swift in Sources */,
+				D76DA89A25F2638F00459823 /* BundleFileReader.swift in Sources */,
 				BC04AA9825E7BCEC00152E93 /* UserDefaults.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
