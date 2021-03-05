@@ -51,9 +51,11 @@ class JSONConverterTests: XCTestCase {
     
     func testJsonStringEncoding() {
         
-        let jsonString = "{\"names\": [\"Bob\", \"Tim\", \"Tina\"]}"
+        guard let path = Bundle(for: type(of: self)).path(forResource: "array", ofType: "json") else { return XCTFail() }
         
         do {
+            
+            let jsonString = try String(contentsOfFile: path)
             
             let encodedData = try sut.encode(jsonString: jsonString)
             

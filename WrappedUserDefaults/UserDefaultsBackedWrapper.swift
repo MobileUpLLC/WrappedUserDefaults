@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - WrapperType
+
 enum WrapperType {
     
     case codable
@@ -16,7 +18,11 @@ enum WrapperType {
     case primitive
 }
 
+// MARK: - UserDefaultsBacked
+
 @propertyWrapper struct UserDefaultsBacked<Value> {
+    
+    // MARK: - Public properties
     
     let key: String
     let defaultValue: Value
@@ -27,6 +33,8 @@ enum WrapperType {
         get { getFromLocalStorage(key: key, type: type) ?? defaultValue }
         set { saveToLocalStorage(key: key, type: type, object: newValue) }
     }
+    
+    // MARK: - Private methods
     
     private func getFromLocalStorage(key: String, type: WrapperType) -> Value? {
         
