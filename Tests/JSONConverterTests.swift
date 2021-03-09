@@ -9,7 +9,7 @@ import XCTest
 
 @testable import WrappedUserDefaults
 
-struct TestingDictionaryStruct: Codable, Equatable {
+struct ExampleStruct: Codable, Equatable {
     
     let integer: Int
     let float: Float
@@ -18,7 +18,7 @@ struct TestingDictionaryStruct: Codable, Equatable {
     let firstname: String
 }
 
-struct TestingArrayStruct: Codable, Equatable {
+struct Person: Codable, Equatable {
     
     let name: String
     let age: Int
@@ -92,11 +92,11 @@ class JSONConverterTests: XCTestCase {
             
             let json = try Data(contentsOf: url)
             
-            let initialDecodedData = try JSONConverter.decode(TestingDictionaryStruct.self, data: json)
+            let initialDecodedData = try JSONConverter.decode(ExampleStruct.self, data: json)
             
             let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
-            let finalDecodedData = try JSONConverter.decode(TestingDictionaryStruct.self, data: encodedData)
+            let finalDecodedData = try JSONConverter.decode(ExampleStruct.self, data: encodedData)
             
             XCTAssertEqual(initialDecodedData, finalDecodedData)
             
@@ -114,11 +114,11 @@ class JSONConverterTests: XCTestCase {
             
             let json = try Data(contentsOf: url)
             
-            let initialDecodedData = try JSONConverter.decode([TestingArrayStruct].self, data: json)
+            let initialDecodedData = try JSONConverter.decode([Person].self, data: json)
             
             let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
-            let finalDecodedData = try JSONConverter.decode([TestingArrayStruct].self, data: encodedData)
+            let finalDecodedData = try JSONConverter.decode([Person].self, data: encodedData)
             
             XCTAssertEqual(initialDecodedData, finalDecodedData)
             
