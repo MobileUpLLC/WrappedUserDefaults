@@ -9,6 +9,21 @@ import XCTest
 
 @testable import WrappedUserDefaults
 
+struct TestingDictionaryStruct: Codable, Equatable {
+    
+    let integer: Int
+    let float: Float
+    let boolean: Bool
+    let date: String
+    let firstname: String
+}
+
+struct TestingArrayStruct: Codable, Equatable {
+    
+    let name: String
+    let age: Int
+}
+
 class JSONConverterTests: XCTestCase {
     
     var sut = JSONConverter.self
@@ -41,7 +56,7 @@ class JSONConverterTests: XCTestCase {
 
             let decodedData = try sut.decode(data: encodedData) as [String: Any]
             
-            XCTAssertEqual(decodedData.keys, dictionary.keys)
+            XCTAssertEqual(NSDictionary(dictionary: dictionary, copyItems: false), NSDictionary(dictionary: decodedData, copyItems: false))
 
         } catch {
 
@@ -69,19 +84,43 @@ class JSONConverterTests: XCTestCase {
         }
     }
     
-    func testJsonEncoding() {
+    func testJsonDictionaryEncoding() {
         
         guard let url = Bundle(for: type(of: self)).url(forResource: "dictionary", withExtension: "json") else { return XCTFail() }
         
         do {
             
-            let json = try BundleFileReader.readData(name: "dictionary", withExtension: "json")
+            let json = try Data(contentsOf: url)
             
-            let encodedData = try JSONConverter.encode(json: json)
+            let initialDecodedData = try JSONConverter.decode(TestingDictionaryStruct.self, data: json)
             
-            let decodedData = try JSONConverter.decode(Data.self, data: encodedData)
+            let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
-            XCTAssertEqual(json, decodedData)
+            let finalDecodedData = try JSONConverter.decode(TestingDictionaryStruct.self, data: encodedData)
+            
+            XCTAssertEqual(initialDecodedData, finalDecodedData)
+            
+        } catch {
+            
+            XCTFail()
+        }
+    }
+    
+    func testJsonArrayEncoding() {
+        
+        guard let url = Bundle(for: type(of: self)).url(forResource: "array", withExtension: "json") else { return XCTFail() }
+        
+        do {
+            
+            let json = try Data(contentsOf: url)
+            
+            let initialDecodedData = try JSONConverter.decode([TestingArrayStruct].self, data: json)
+            
+            let encodedData = try JSONConverter.encode(object: initialDecodedData)
+            
+            let finalDecodedData = try JSONConverter.decode([TestingArrayStruct].self, data: encodedData)
+            
+            XCTAssertEqual(initialDecodedData, finalDecodedData)
             
         } catch {
             

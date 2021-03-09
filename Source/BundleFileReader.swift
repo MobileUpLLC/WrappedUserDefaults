@@ -27,11 +27,11 @@ open class BundleFileReader {
         return try JSONConverter.decode(T.self, data: data)
     }
     
-    static func readJSON(name: String) throws -> Any {
+    static func readJSON<T: Codable>(name: String, into type: T.Type) throws -> Any {
         
         let data = try readData(name: name, withExtension: "json")
         
-        return  try JSONConverter.decode(data: data)
+        return try JSONConverter.decode(type, data: data)
     }
     
     static func readData(name: String, withExtension ext: String) throws -> Data {
