@@ -92,11 +92,11 @@ class JSONConverterTests: XCTestCase {
             
             let json = try Data(contentsOf: url)
             
-            let initialDecodedData = try JSONConverter.decode(ExampleStruct.self, data: json)
+            let initialDecodedData = try JSONConverter.decode(ExampleStruct.self, data: json, dateDecodingStrategy: .iso8601)
             
             let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
-            let finalDecodedData = try JSONConverter.decode(ExampleStruct.self, data: encodedData)
+            let finalDecodedData = try JSONConverter.decode(ExampleStruct.self, data: encodedData, dateDecodingStrategy: .iso8601)
             
             XCTAssertEqual(initialDecodedData, finalDecodedData)
             

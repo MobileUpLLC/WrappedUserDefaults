@@ -21,7 +21,7 @@ class UserDefaultsArchivedWrapperTests: XCTestCase {
         
         super.setUp()
         
-        sutDictionary = ExampleStruct(integer: 123, float: 32.1, boolean: true, date: "12.09.1992", firstname: "John")
+        sutDictionary = ExampleStruct(integer: 123, float: 32.1, boolean: true, date: "2020-05-08T21:15:10Z", firstname: "John")
         
         sutArray = Person(name: "Daniel", age: 33)
     }
