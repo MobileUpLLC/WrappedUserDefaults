@@ -9,7 +9,7 @@ import Foundation
 
 // MARK: - UserDefaultsArchived
 
-@propertyWrapper struct UserDefaultsArchived<Value: NSObject> where Value: NSCoding {
+@propertyWrapper struct UserDefaultsArchived<Value> {
     
     // MARK: - Public properties
     
@@ -28,7 +28,7 @@ import Foundation
         
         if let data = UserDefaults.standard.object(forKey: key) as? Data {
             
-            return unarchiveObject(from: data)
+            return getUnarchivedObject(from: data)
             
         } else {
             
@@ -50,11 +50,11 @@ import Foundation
         }
     }
     
-    private func unarchiveObject(from data: Data) -> Value? {
+    private func getUnarchivedObject(from data: Data) -> Value? {
         
         do {
             
-            return try NSKeyedUnarchiver.unarchivedObject(ofClass: Value.self, from: data)
+            return try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? Value
             
         } catch {
             
