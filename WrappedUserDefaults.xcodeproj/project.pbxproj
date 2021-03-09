@@ -16,6 +16,7 @@
 		BCA5C64725F17709002BBD34 /* dictionary.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA5C64625F17709002BBD34 /* dictionary.json */; };
 		BCA5C64D25F17710002BBD34 /* array.json in Resources */ = {isa = PBXBuildFile; fileRef = BCA5C64C25F17710002BBD34 /* array.json */; };
 		D76DA89A25F2638F00459823 /* BundleFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DA89925F2638F00459823 /* BundleFileReader.swift */; };
+		D76DA8A225F7836100459823 /* UserDefaultsArchivedWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D76DA8A125F7836100459823 /* UserDefaultsArchivedWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		BCA5C64625F17709002BBD34 /* dictionary.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dictionary.json; sourceTree = "<group>"; };
 		BCA5C64C25F17710002BBD34 /* array.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = array.json; sourceTree = "<group>"; };
 		D76DA89925F2638F00459823 /* BundleFileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BundleFileReader.swift; sourceTree = "<group>"; };
+		D76DA8A125F7836100459823 /* UserDefaultsArchivedWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsArchivedWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 				BC04AA6C25E7AA8300152E93 /* JSONConverter.swift */,
 				D76DA89925F2638F00459823 /* BundleFileReader.swift */,
 				BC04AA9D25E7BF7600152E93 /* UserDefaultsBackedWrapper.swift */,
+				D76DA8A125F7836100459823 /* UserDefaultsArchivedWrapper.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D76DA8A225F7836100459823 /* UserDefaultsArchivedWrapper.swift in Sources */,
 				BC04AA9E25E7BF7600152E93 /* UserDefaultsBackedWrapper.swift in Sources */,
 				BC04AA6D25E7AA8300152E93 /* JSONConverter.swift in Sources */,
 				D76DA89A25F2638F00459823 /* BundleFileReader.swift in Sources */,
