@@ -86,18 +86,17 @@ class JSONConverterTests: XCTestCase {
     
     func testJsonDictionaryEncoding() {
         
-        guard let url = Bundle(for: type(of: self)).url(forResource: "dictionary", withExtension: "json") else { return XCTFail() }
+        let testBundle = Bundle(for: type(of: self))
         
         do {
             
-            let json = try Data(contentsOf: url)
-            
-            let initialDecodedData = try JSONConverter.decode(ExampleStruct.self, data: json, dateDecodingStrategy: .iso8601)
+            let initialDecodedData = try BundleFileReader.readJSON(name: "dictionary", into: ExampleStruct.self, bundle: testBundle) as? ExampleStruct
             
             let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
-            let finalDecodedData = try JSONConverter.decode(ExampleStruct.self, data: encodedData, dateDecodingStrategy: .iso8601)
+            let finalDecodedData = try JSONConverter.decode(ExampleStruct.self, data: encodedData)
             
+            XCTAssertNotNil(initialDecodedData)
             XCTAssertEqual(initialDecodedData, finalDecodedData)
             
         } catch {
@@ -108,18 +107,17 @@ class JSONConverterTests: XCTestCase {
     
     func testJsonArrayEncoding() {
         
-        guard let url = Bundle(for: type(of: self)).url(forResource: "array", withExtension: "json") else { return XCTFail() }
+        let testBundle = Bundle(for: type(of: self))
         
         do {
             
-            let json = try Data(contentsOf: url)
-            
-            let initialDecodedData = try JSONConverter.decode([Person].self, data: json)
+            let initialDecodedData = try BundleFileReader.readJSON(name: "array", into: [Person].self, bundle: testBundle) as? [Person]
             
             let encodedData = try JSONConverter.encode(object: initialDecodedData)
             
             let finalDecodedData = try JSONConverter.decode([Person].self, data: encodedData)
             
+            XCTAssertNotNil(initialDecodedData)
             XCTAssertEqual(initialDecodedData, finalDecodedData)
             
         } catch {

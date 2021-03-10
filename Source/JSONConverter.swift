@@ -21,7 +21,7 @@ open class JSONConverter {
     }
     
     // MARK: - Encode
-    // Encodable -> Data
+    
     class func encode<T: Encodable>(
         
         object               : T,
@@ -35,7 +35,6 @@ open class JSONConverter {
         return try encoder.encode(object)
     }
     
-    // JSON -> Data
     class func encode(
         
         json    : JSON,
@@ -46,7 +45,6 @@ open class JSONConverter {
         return try JSONSerialization.data(withJSONObject: json, options: options)
     }
     
-    // Dictionary -> Data
     class func encode(
         
         dictionary : [String : Any],
@@ -57,7 +55,6 @@ open class JSONConverter {
         return try encode(json: dictionary, options: options)
     }
     
-    // JsonString -> Data
     class func encode(
         
         jsonString : String,
@@ -70,7 +67,7 @@ open class JSONConverter {
     
     
     // MARK: - Decode
-    //Data → Decodable
+    
     class func decode<T: Decodable>(
         
         _ type               : T.Type,
@@ -85,7 +82,6 @@ open class JSONConverter {
         return try decoder.decode(type, from: data)
     }
     
-    //JSON → Decodable
     class func decode<T: Decodable>(
         
         _ type               : T.Type,
@@ -99,7 +95,6 @@ open class JSONConverter {
         return try decode(type, data: data, dateDecodingStrategy: dateDecodingStrategy)
     }
     
-    //Dictionary → Decodable
     class func decode<T: Decodable>(
         
         _ type               : T.Type,
@@ -113,7 +108,6 @@ open class JSONConverter {
         return try decode(type, data: data, dateDecodingStrategy: dateDecodingStrategy)
     }
     
-    //Data → Dictionary
     class func decode(
         
         data    : Data,
@@ -131,7 +125,6 @@ open class JSONConverter {
         return result
     }
     
-    //Data → JsonString
     class func decode(
         
         data    : Data,

@@ -11,7 +11,7 @@ import XCTest
 
 class UserDefaultsArchivedWrapperTests: XCTestCase {
     
-    @UserDefaultsArchived<ExampleStruct>(key: "keyForDictionary", defaultValue: ExampleStruct(integer: 0, float: 0, boolean: true, date: "", firstname:     ""))
+    @UserDefaultsArchived<ExampleStruct>(key: "keyForDictionary", defaultValue: ExampleStruct(integer: 0, float: 0, boolean: true, date: "", firstname: ""))
     var sutDictionary
     
     @UserDefaultsArchived<Person>(key: "keyForArray", defaultValue: Person(name: "", age: 0))
